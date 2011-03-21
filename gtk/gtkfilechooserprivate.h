@@ -32,6 +32,7 @@
 #include "gtktreemodelsort.h"
 #include "gtktreestore.h"
 #include "gtktreeview.h"
+#include "gtkiconview.h"
 #include "gtkvbox.h"
 
 G_BEGIN_DECLS
@@ -142,6 +143,11 @@ typedef enum {
 } ReloadState;
 
 typedef enum {
+  VIEW_MODE_LIST,
+  VIEW_MODE_ICON
+} ViewMode;
+
+typedef enum {
   LOCATION_MODE_PATH_BAR,
   LOCATION_MODE_FILENAME_ENTRY
 } LocationMode;
@@ -176,6 +182,7 @@ struct _GtkFileChooserDefault
   GtkWidget *browse_shortcuts_popup_menu_remove_item;
   GtkWidget *browse_shortcuts_popup_menu_rename_item;
   GtkWidget *browse_files_tree_view;
+  GtkWidget *browse_files_icon_view;
   GtkWidget *browse_files_popup_menu;
   GtkWidget *browse_files_popup_menu_add_shortcut_item;
   GtkWidget *browse_files_popup_menu_hidden_files_item;
@@ -185,6 +192,7 @@ struct _GtkFileChooserDefault
   GtkSizeGroup *browse_path_bar_size_group;
   GtkWidget *browse_path_bar;
 
+  GtkTreeModel *current_model;
   GtkFileSystemModel *browse_files_model;
   char *browse_files_last_selected_name;
 
@@ -208,6 +216,8 @@ struct _GtkFileChooserDefault
   GtkWidget *preview_widget;
   GtkWidget *extra_align;
   GtkWidget *extra_widget;
+
+  ViewMode view_mode;
 
   GtkWidget *location_button;
   GtkWidget *location_entry_box;
