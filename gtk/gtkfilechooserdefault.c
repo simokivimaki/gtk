@@ -4274,12 +4274,6 @@ list_button_press_event_cb (GtkWidget             *widget,
   return TRUE;
 }
 
-typedef struct {
-  OperationMode operation_mode;
-  gint general_column;
-  gint model_column;
-} ColumnMap;
-
 /* Sets the sort column IDs for the file list based on the operation mode */
 static void
 file_list_set_sort_column_ids (GtkFileChooserDefault *impl)
