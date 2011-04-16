@@ -10285,7 +10285,7 @@ update_cell_renderer_attributes (GtkFileChooserDefault *impl)
 
   /* only applicable in the tree view (i.e. list view) */
   if (!impl->browse_files_tree_view)
-    return
+    return;
 
   always_sensitive = impl->action != GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER &&
                      impl->action != GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER;
